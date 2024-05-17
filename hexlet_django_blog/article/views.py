@@ -6,6 +6,8 @@ from django.urls import reverse
 from hexlet_django_blog.article.models import Article
 
 
+
+
 class IndexView(View):
 
     def get(self, request, *args, **kwargs):
@@ -22,6 +24,8 @@ class ArticleView(View):
         return render(request,
                       'articles/show.html',
                       context={'article': article, })
+
+
 
 
 #def index(request, tags, article_id):
