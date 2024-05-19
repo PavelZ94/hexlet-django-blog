@@ -60,6 +60,7 @@ class ArticleFormEditView(View):
                        'article_id': article_id,
                        'messages': messages})
 
+
     def post(self, request, *args, **kwargs):
         article_id = kwargs.get('id')
         article = Article.objects.get(id=article_id)
@@ -74,3 +75,14 @@ class ArticleFormEditView(View):
                       {'form': form,
                        'article_id': article_id,
                        'messages': messages})
+
+class ArticleFormDeleteView(View):
+
+    def post(self, request, *args, **kwargs):
+        article_id = kwargs.get('id')
+        article = Article.objects.get(id=article_id)
+#        messages = ''
+        if article:
+            article.delete()
+            messages.success(request, 'Статья удалена')
+        return redirect('articles')
